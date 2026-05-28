@@ -1,0 +1,14 @@
+# Exclude local dev .env files — platform injects all env vars at runtime
+fixme_server/.env
+fixme_server/.env.*
+.env
+.env.*
+
+# Exclude Flutter mobile app (not deployed)
+fixme_app/
+
+# Python caches
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+.pytest_cache/

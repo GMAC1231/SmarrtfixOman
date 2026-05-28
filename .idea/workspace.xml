@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5ff504c2-7607-4baa-9705-6a4481f5a368" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/android/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/android/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/android/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/android/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/android/app/src/main/kotlin/com/example/fixme_app/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/android/app/src/profile/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/android/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/android/build/reports/problems/problems-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/admin_dashboard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/admin_dashboard.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/admin_employee_detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/admin_employee_detail_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/admin_employees_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/admin_employees_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/admin_feedback_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/admin_feedback_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/admin_rating_detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/admin_rating_detail_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/admin_request_detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/admin_request_detail_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/admin_requests_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/admin_requests_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/api_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/api_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/chat_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/chat_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/complete_profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/complete_profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/core/config/config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/core/config/config.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/customer_dashboard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/customer_dashboard.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/dashboard_home_tab.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/dashboard_home_tab.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/employee_dashboard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/employee_dashboard.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/employee_registration.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/employee_registration.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/feedback_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/feedback_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/shared/services/chat_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/shared/services/chat_api.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/shared/services/chat_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/shared/services/chat_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/shared/services/location_tracking_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/shared/services/location_tracking_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/shared/services/request_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/shared/services/request_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/lib/shared/widgets/rating_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/lib/shared/widgets/rating_dialog.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixme_app/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/fixme_app/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;GMAC1231&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/GMAC1231/fix&quot;,
+    &quot;accountId&quot;: &quot;d0b6ffe1-47e3-4283-92ca-7040a67e08c1&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="352x6b3ZjLEQCz6Noqvh098PweQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/benty/repair_backend&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;device.mirroring&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  }
+}</component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5ff504c2-7607-4baa-9705-6a4481f5a368" name="Changes" comment="" />
+      <created>1762321793776</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1762321793776</updated>
+    </task>
+    <servers />
+  </component>
+</project>
