@@ -1,0 +1,12 @@
+{
+<<<<<<< HEAD
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "cmake.sourceDirectory": "C:/Users/benty/repair_backend/fixme_app/linux"
+=======
+<<<<<<< HEAD
+    "cmake.sourceDirectory": "C:/Users/benty/repair_backend/fixme_app/linux"
+=======
+    "java.configuration.updateBuildConfiguration": "automatic"
+>>>>>>> 916a1148ee6be229568495acb348c950bcf2037e
+>>>>>>> 61125cfa1159566b1442d56bc94160df78046b7b
+}
