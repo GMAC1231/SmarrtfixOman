@@ -10,6 +10,7 @@ import 'admin_employees_screen.dart';
 import 'admin_feedback_screen.dart';
 import 'admin_ratings_screen.dart';
 import 'admin_requests_screen.dart';
+import 'admin_pending_employees_screen.dart';
 
 class AdminDashboardScreen extends StatefulWidget {
   const AdminDashboardScreen({super.key});
@@ -24,7 +25,7 @@ class _AdminDashboardScreenState
     extends State<AdminDashboardScreen> {
 
       static const String baseUrl =
-    'https://GMAC121.pythonanywhere.com';
+    'http://192.168.100.15:5000';
 
   ////////////////////////////////////////////////////////////
   /// LOAD COUNTS
@@ -1294,6 +1295,24 @@ final feedback =
                         screen:
                             const AdminRatingsScreen(),
                       ),
+
+                      _navCard(
+
+  title:
+      'Pending Employees',
+
+  subtitle:
+      'Approve or reject employee verification requests.',
+
+  icon:
+      Icons.verified_user_rounded,
+
+  colors:
+      gradients[2],
+
+  screen:
+      const AdminPendingEmployeesScreen(),
+),
 
                       _navCard(
 

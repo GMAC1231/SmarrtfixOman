@@ -14,7 +14,7 @@ class ChatService {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // Replace with your real backend base URL or move to config.dart
-  static const String _baseUrl = 'https://GMAC121.pythonanywhere.com';
+  static const String _baseUrl = 'http://192.168.100.15:5000';
 
   static User get currentUser {
     final user = _auth.currentUser;

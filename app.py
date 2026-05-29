@@ -752,6 +752,390 @@ def send_chat_message():
         return jsonify({"error": str(e)}), 500
     
 
+############################################################
+# EMAIL SENDER
+############################################################
+
+def send_status_email(
+    to_email,
+    subject,
+    body,
+):
+
+    print("EMAIL FUNCTION START")
+
+    print("TO =>", to_email)
+
+    print("SUBJECT =>", subject)
+
+    if DISABLE_MAIL:
+
+        print("MAIL DISABLED")
+
+        return
+
+    try:
+
+        ####################################################
+        # VALIDATE EMAIL
+        ####################################################
+
+        if not to_email:
+
+            raise Exception(
+                "Recipient email missing"
+            )
+
+        ####################################################
+        # CREATE MESSAGE
+        ####################################################
+
+        msg = Message(
+
+            subject=subject,
+
+            recipients=[to_email],
+
+            body=body,
+
+            sender=MAIL_DEFAULT_SENDER,
+        )
+
+        msg.charset = "utf-8"
+
+        ####################################################
+        # DEBUG
+        ####################################################
+
+        print(
+            "MAIL USERNAME =>",
+            MAIL_USERNAME,
+        )
+
+        print(
+            "MAIL DEFAULT SENDER =>",
+            MAIL_DEFAULT_SENDER,
+        )
+
+        print(
+            "EMAIL ABOUT TO SEND...",
+        )
+
+        ####################################################
+        # SEND EMAIL
+        ####################################################
+
+        mail.send(msg)
+
+        ####################################################
+        # SUCCESS
+        ####################################################
+
+        print(
+            "EMAIL SENT SUCCESSFULLY =>",
+            to_email,
+        )
+
+    except Exception as e:
+
+        ####################################################
+        # FULL ERROR
+        ####################################################
+
+        import traceback
+
+        print(
+            "EMAIL ERROR =>",
+            str(e),
+        )
+
+        traceback.print_exc()
+
+        raise e
+
+
+############################################################
+# PENDING EMPLOYEE EMAIL
+############################################################
+
+@app.route(
+    "/pending-employee",
+    methods=["POST"],
+)
+def pending_employee():
+
+    print("PENDING API HIT")
+
+    try:
+
+        data = request.get_json(force=True)
+
+        print(
+            "PENDING DATA =>",
+            data,
+        )
+
+        employee_email = data.get(
+            "email"
+        )
+
+        employee_name = data.get(
+            "name",
+            "Employee",
+        )
+
+        ####################################################
+        # SEND EMAIL
+        ####################################################
+
+        send_status_email(
+
+            employee_email,
+
+            "SmartFixOman Verification Pending ⏳",
+
+            f"""
+Hello {employee_name},
+
+Your SmartFixOman employee verification request has been submitted successfully.
+
+Our admin team will review your information shortly.
+
+You will receive another email once approved or rejected.
+
+Thank you for joining SmartFixOman 🚀
+""",
+        )
+
+        return jsonify({
+
+            "success": True,
+
+            "message":
+                "Pending email sent",
+        })
+
+    except Exception as e:
+
+        print(
+            "PENDING EMAIL ERROR =>",
+            str(e),
+        )
+
+        return jsonify({
+
+            "success": False,
+
+            "error": str(e),
+        }), 500
+
+
+############################################################
+# APPROVE EMPLOYEE
+############################################################
+
+@app.route(
+    '/approve-employee',
+    methods=['POST'],
+)
+def approve_employee():
+
+    print("APPROVE API HIT")
+
+    try:
+
+        data = request.get_json(force=True)
+
+        print(
+            "APPROVE DATA =>",
+            data,
+        )
+
+        email = data.get(
+            "email"
+        )
+
+        name = data.get(
+            "name",
+            "Employee",
+        )
+
+        print(
+            "APPROVE EMAIL =>",
+            email,
+        )
+
+        ####################################################
+        # SUBJECT
+        ####################################################
+
+        subject = (
+            "SmartFixOman Employee Approved ✅"
+        )
+
+        ####################################################
+        # BODY
+        ####################################################
+
+        body = f"""
+Hello {name},
+
+Congratulations!
+
+Your SmartFixOman employee account has been approved successfully.
+
+You can now:
+• Login
+• Accept jobs
+• Receive customer requests
+• Start earning
+
+Welcome to SmartFixOman 🚀
+
+Best regards,
+SmartFixOman Team
+"""
+
+        ####################################################
+        # SEND EMAIL
+        ####################################################
+
+        send_status_email(
+
+            email,
+
+            subject,
+
+            body,
+        )
+
+        print(
+            "APPROVE EMAIL SENT SUCCESS",
+        )
+
+        return jsonify({
+
+            "ok": True,
+
+            "message":
+                "Approve email sent",
+        })
+
+    except Exception as e:
+
+        print(
+            "APPROVE EMAIL ERROR =>",
+            str(e),
+        )
+
+        return jsonify({
+
+            "ok": False,
+
+            "error": str(e),
+        }), 500
+
+
+############################################################
+# REJECT EMPLOYEE
+############################################################
+
+@app.route(
+    '/reject-employee',
+    methods=['POST'],
+)
+def reject_employee():
+
+    print("REJECT API HIT")
+
+    try:
+
+        data = request.get_json(force=True)
+
+        print(
+            "REJECT DATA =>",
+            data,
+        )
+
+        email = data.get(
+            "email"
+        )
+
+        name = data.get(
+            "name",
+            "Employee",
+        )
+
+        print(
+            "REJECT EMAIL =>",
+            email,
+        )
+
+        ####################################################
+        # SUBJECT
+        ####################################################
+
+        subject = (
+            "SmartFixOman Employee Request Rejected ❌"
+        )
+
+        ####################################################
+        # BODY
+        ####################################################
+
+        body = f"""
+Hello {name},
+
+Unfortunately, your SmartFixOman employee registration request has been rejected.
+
+Please contact support for more details.
+
+Best regards,
+SmartFixOman Team
+"""
+
+        ####################################################
+        # SEND EMAIL
+        ####################################################
+
+        send_status_email(
+
+            email,
+
+            subject,
+
+            body,
+        )
+
+        print(
+            "REJECT EMAIL SENT SUCCESS",
+        )
+
+        return jsonify({
+
+            "ok": True,
+
+            "message":
+                "Reject email sent",
+        })
+
+    except Exception as e:
+
+        print(
+            "REJECT EMAIL ERROR =>",
+            str(e),
+        )
+
+        return jsonify({
+
+            "ok": False,
+
+            "error": str(e),
+        }), 500
+
+
+
+
 @app.get("/profile-image/<path:email>")
 def get_profile_image(email: str):
     email = _trim(email, MAX_EMAIL)

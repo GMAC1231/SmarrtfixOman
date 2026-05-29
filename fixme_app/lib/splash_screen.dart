@@ -8,7 +8,7 @@ import 'complete_profile_screen.dart';
 import 'customer_dashboard.dart';
 import 'employee_dashboard.dart';
 import 'home_page.dart';
-
+import 'employee_pending_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -209,23 +209,94 @@ if (role.isEmpty) {
         return;
       }
 
-      ////////////////////////////////////////////////////////
-      /// EMPLOYEE
-      ////////////////////////////////////////////////////////
 
-      if (role == 'employee') {
 
-        if (!mounted) return;
+////////////////////////////////////////////////////////
+/// EMPLOYEE
+////////////////////////////////////////////////////////
 
-        setState(() {
+if (
 
-          _next =
-              const EmployeeDashboardScreen();
-        });
+    role == 'employee' ||
 
-        return;
-      }
+    data['requestedRole'] == 'employee'
 
+) {
+
+  //////////////////////////////////////////////////////
+  /// APPROVAL STATUS
+  //////////////////////////////////////////////////////
+
+  final approvalStatus =
+
+      (data[
+        'employeeApprovalStatus'
+      ] as String?)
+
+          ?.toLowerCase() ??
+
+      'pending';
+
+  //////////////////////////////////////////////////////
+  /// APPROVED
+  //////////////////////////////////////////////////////
+
+  if (
+      approvalStatus ==
+      'approved'
+  ) {
+
+    if (!mounted) return;
+
+    setState(() {
+
+      _next =
+          const EmployeeDashboardScreen();
+    });
+
+    return;
+  }
+
+  //////////////////////////////////////////////////////
+  /// PENDING
+  //////////////////////////////////////////////////////
+
+  if (
+      approvalStatus ==
+      'pending'
+  ) {
+
+    if (!mounted) return;
+
+    setState(() {
+
+      _next =
+          const EmployeePendingScreen();
+    });
+
+    return;
+  }
+
+  //////////////////////////////////////////////////////
+  /// REJECTED
+  //////////////////////////////////////////////////////
+
+  if (
+      approvalStatus ==
+      'rejected'
+  ) {
+
+    if (!mounted) return;
+
+    setState(() {
+
+      _next =
+          const EmployeePendingScreen();
+    });
+
+    return;
+  }
+}
       ////////////////////////////////////////////////////////
       /// CUSTOMER
       ////////////////////////////////////////////////////////

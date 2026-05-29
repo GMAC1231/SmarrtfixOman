@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:fixme_app/employee_pending_screen.dart';
 import 'package:fixme_app/customer_dashboard.dart';
 import 'package:fixme_app/employee_dashboard.dart';
 import 'package:fixme_app/employee_registration.dart';
@@ -1677,13 +1677,262 @@ Widget _buildStatsCard() {
         children: [
           _sectionTitle('Actions', Icons.flash_on_rounded),
           const SizedBox(height: 16),
-          if (!widget.isEmployee)
-            _actionTile(
-              title: 'Switch to Employee',
-              subtitle: 'Change your role and access provider features.',
-              icon: Icons.engineering_rounded,
-              onTap: _busy ? null : () => _switchRoleAndRoute('employee'),
-            ),
+////////////////////////////////////////////////////////////
+/// REQUEST EMPLOYEE ACCESS
+////////////////////////////////////////////////////////////
+
+if (!widget.isEmployee)
+
+  _actionTile(
+
+    title: 'Request Employee Access',
+
+    subtitle:
+        'Submit a verification request to become a service provider.',
+
+    icon:
+        Icons.verified_user_rounded,
+
+    onTap: _busy
+
+        ? null
+
+        : () async {
+
+            final user = _user;
+
+            if (user == null) return;
+
+            ////////////////////////////////////////////////////
+            /// LOADING
+            ////////////////////////////////////////////////////
+
+            setState(() {
+
+              _busy = true;
+            });
+
+            try {
+
+              //////////////////////////////////////////////////
+              /// USER REF
+              //////////////////////////////////////////////////
+
+              final userRef =
+
+                  FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(user.uid);
+
+              //////////////////////////////////////////////////
+              /// GET CURRENT DATA
+              //////////////////////////////////////////////////
+
+              final snap =
+                  await userRef.get();
+
+              final data =
+                  snap.data() ??
+                      <String, dynamic>{};
+
+              //////////////////////////////////////////////////
+              /// CHECK EXISTING PENDING
+              //////////////////////////////////////////////////
+
+              final existingStatus =
+
+                  (data[
+                    'employeeApprovalStatus'
+                  ] ?? '')
+                      .toString()
+                      .toLowerCase();
+////////////////////////////////////////////////////
+/// ALREADY APPROVED
+////////////////////////////////////////////////////
+
+if (
+    existingStatus ==
+    'approved'
+) {
+
+  //////////////////////////////////////////////////
+  /// UPDATE ROLE
+  //////////////////////////////////////////////////
+
+  await userRef.set({
+
+    'role': 'employee',
+
+  }, SetOptions(merge: true));
+
+  //////////////////////////////////////////////////
+  /// PUBLIC USERS
+  //////////////////////////////////////////////////
+
+  await FirebaseFirestore.instance
+
+      .collection('publicUsers')
+
+      .doc(user.uid)
+
+      .set({
+
+    'role': 'employee',
+
+  }, SetOptions(merge: true));
+
+  //////////////////////////////////////////////////
+  /// SAVE LOCAL
+  //////////////////////////////////////////////////
+
+  final sp =
+      await SharedPreferences.getInstance();
+
+  await sp.setBool(
+    _kIsEmployee,
+    true,
+  );
+
+  //////////////////////////////////////////////////
+  /// OPEN DASHBOARD
+  //////////////////////////////////////////////////
+
+  if (!mounted) return;
+
+  Navigator.pushAndRemoveUntil(
+
+    context,
+
+    MaterialPageRoute(
+
+      builder: (_) =>
+
+          const EmployeeDashboardScreen(),
+    ),
+
+    (route) => false,
+  );
+
+  return;
+}
+
+////////////////////////////////////////////////////
+/// PENDING
+////////////////////////////////////////////////////
+
+if (
+    existingStatus ==
+    'pending'
+) {
+
+  _showSnack(
+
+    'Your employee request is already pending approval.',
+  );
+
+  return;
+}
+              //////////////////////////////////////////////////
+              /// CHECK PROFILE COMPLETION
+              //////////////////////////////////////////////////
+
+              if (
+                  !_isCustomerProfileComplete(
+                    data,
+                  )
+              ) {
+
+                _showSnack(
+
+                  'Please complete your profile first.',
+                );
+
+                return;
+              }
+
+              //////////////////////////////////////////////////
+              /// SAVE REQUEST
+              //////////////////////////////////////////////////
+
+              await userRef.set({
+
+                'requestedRole':
+                    'employee',
+
+                'employeeApprovalStatus':
+                    'pending',
+
+                'employeeVerified':
+                    false,
+
+                'requestedAt':
+                    FieldValue.serverTimestamp(),
+
+              }, SetOptions(merge: true));
+
+              //////////////////////////////////////////////////
+              /// PUBLIC USERS
+              //////////////////////////////////////////////////
+
+              await FirebaseFirestore
+                  .instance
+                  .collection(
+                    'publicUsers',
+                  )
+                  .doc(user.uid)
+                  .set({
+
+                'requestedRole':
+                    'employee',
+
+              }, SetOptions(merge: true));
+
+              //////////////////////////////////////////////////
+              /// SUCCESS
+              //////////////////////////////////////////////////
+
+              _showSnack(
+
+                'Employee verification request submitted successfully.',
+              );
+
+              //////////////////////////////////////////////////
+              /// OPEN PENDING SCREEN
+              //////////////////////////////////////////////////
+
+              if (!mounted) return;
+
+              Navigator.push(
+
+                context,
+
+                MaterialPageRoute(
+
+                  builder: (_) =>
+
+                      const EmployeePendingScreen(),
+                ),
+              );
+
+            } catch (e) {
+
+              _showSnack(
+
+                'Request failed: $e',
+              );
+
+            } finally {
+
+              if (mounted) {
+
+                setState(() {
+
+                  _busy = false;
+                });
+              }
+            }
+          },
+  ),
           if (widget.isEmployee)
             _actionTile(
               title: 'Switch to Customer',
