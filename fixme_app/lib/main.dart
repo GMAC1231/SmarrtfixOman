@@ -208,29 +208,45 @@ class AppStateScope
 /// FIREBASE INIT
 ////////////////////////////////////////////////////////////
 
-Future<void> _initFirebase() async {
+////////////////////////////////////////////////////////////
+/// FIREBASE INIT
+////////////////////////////////////////////////////////////
 
+Future<void> _initFirebase() async {
   await Firebase.initializeApp();
 
   ////////////////////////////////////////////////////////////
-  /// IMPORTANT FIX
+  /// APP CHECK
   ///
-  /// Disable Play Integrity issues on Samsung/Android 10
+  /// For development:
+  /// - Debug provider avoids Play Integrity issues
+  /// - Register debug token in Firebase App Check
+  ///
+  /// For production:
+  /// - Use AndroidProvider.playIntegrity
   ////////////////////////////////////////////////////////////
 
-  await FirebaseAppCheck.instance.activate(
+  try {
+    await FirebaseAppCheck.instance.activate(
+      androidProvider: AndroidProvider.debug,
+      appleProvider: AppleProvider.debug,
+    );
 
-    androidProvider:
-        AndroidProvider.debug,
-
-    appleProvider:
-        AppleProvider.debug,
-  );
+    debugPrint(
+      'Firebase App Check initialized',
+    );
+  } catch (e) {
+    debugPrint(
+      'App Check init failed: $e',
+    );
+  }
 
   debugPrint(
     'Firebase initialized successfully',
   );
 }
+
+
 
 ////////////////////////////////////////////////////////////
 /// MAIN

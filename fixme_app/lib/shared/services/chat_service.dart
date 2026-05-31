@@ -300,11 +300,13 @@ class ChatService {
     return chatRef(chatId).snapshots();
   }
 
-  static Future<void> setTyping({
-    required String chatId,
-    required bool isTyping,
-  }) async {
+static Future<void> setTyping({
+  required String chatId,
+  required bool isTyping,
+}) async {
+  try {
     final uid = currentUser.uid;
+
     await chatRef(chatId).set(
       <String, dynamic>{
         'typing_$uid': isTyping,
@@ -312,13 +314,21 @@ class ChatService {
       },
       SetOptions(merge: true),
     );
-  }
 
-  static Future<void> setOnline({
-    required String chatId,
-    required bool isOnline,
-  }) async {
+    print('✅ TYPING SUCCESS');
+  } catch (e, s) {
+    print('❌ TYPING FAILED => $e');
+    print(s);
+  }
+}
+
+static Future<void> setOnline({
+  required String chatId,
+  required bool isOnline,
+}) async {
+  try {
     final uid = currentUser.uid;
+
     await chatRef(chatId).set(
       <String, dynamic>{
         'online_$uid': isOnline,
@@ -327,36 +337,56 @@ class ChatService {
       },
       SetOptions(merge: true),
     );
-  }
 
-  static Future<void> resetUnread({
-    required String chatId,
-  }) async {
+    print('✅ ONLINE SUCCESS');
+  } catch (e, s) {
+    print('❌ ONLINE FAILED => $e');
+    print(s);
+  }
+}
+static Future<void> resetUnread({
+  required String chatId,
+}) async {
+  try {
     final uid = currentUser.uid;
+
     await chatRef(chatId).set(
       <String, dynamic>{
         'unread_$uid': 0,
       },
       SetOptions(merge: true),
     );
-  }
 
-  static Future<void> markMessageDelivered({
-    required String chatId,
-    required String msgId,
-  }) async {
+    print('✅ RESET UNREAD SUCCESS');
+  } catch (e, s) {
+    print('❌ RESET UNREAD FAILED => $e');
+    print(s);
+  }
+}
+static Future<void> markMessageDelivered({
+  required String chatId,
+  required String msgId,
+}) async {
+  try {
     await messagesRef(chatId).doc(msgId).set(
       <String, dynamic>{
         'deliveredAt': FieldValue.serverTimestamp(),
       },
       SetOptions(merge: true),
     );
-  }
 
-  static Future<void> markMessageRead({
-    required String chatId,
-    required String msgId,
-  }) async {
+    print('✅ DELIVERED SUCCESS => $msgId');
+  } catch (e, s) {
+    print('❌ DELIVERED FAILED => $e');
+    print(s);
+  }
+}
+
+static Future<void> markMessageRead({
+  required String chatId,
+  required String msgId,
+}) async {
+  try {
     await messagesRef(chatId).doc(msgId).set(
       <String, dynamic>{
         'readAt': FieldValue.serverTimestamp(),
@@ -364,7 +394,13 @@ class ChatService {
       },
       SetOptions(merge: true),
     );
+
+    print('✅ READ SUCCESS => $msgId');
+  } catch (e, s) {
+    print('❌ READ FAILED => $e');
+    print(s);
   }
+}
 
   static Future<void> markIncomingMessagesAsSeen({
     required String chatId,

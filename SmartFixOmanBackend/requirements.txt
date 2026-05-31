@@ -1,0 +1,11 @@
+Flask
+Flask-Cors
+Flask-Mail
+Flask-SocketIO
+python-dotenv
+psycopg2-binary
+SQLAlchemy
+requests
+firebase-admin
+gunicorn
+eventlet
